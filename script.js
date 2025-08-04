@@ -1,15 +1,24 @@
 const board = document.getElementById("chessboard");
 
 const initialPosition = [
-  ["♜", "♞", "♝", "♛", "♚", "♝", "♞", "♜"],
-  ["♟", "♟", "♟", "♟", "♟", "♟", "♟", "♟"],
+  ["bR", "bN", "bB", "bQ", "bK", "bB", "bN", "bR"],
+  ["bP", "bP", "bP", "bP", "bP", "bP", "bP", "bP"],
   ["", "", "", "", "", "", "", ""],
   ["", "", "", "", "", "", "", ""],
   ["", "", "", "", "", "", "", ""],
   ["", "", "", "", "", "", "", ""],
-  ["♙", "♙", "♙", "♙", "♙", "♙", "♙", "♙"],
-  ["♖", "♘", "♗", "♕", "♔", "♗", "♘", "♖"]
+  ["wP", "wP", "wP", "wP", "wP", "wP", "wP", "wP"],
+  ["wR", "wN", "wB", "wQ", "wK", "wB", "wN", "wR"]
 ];
+
+const pieceSymbols = {
+  wP: "♙", wR: "♖", wN: "♘", wB: "♗", wQ: "♕", wK: "♔",
+  bP: "♟", bR: "♜", bN: "♞", bB: "♝", bQ: "♛", bK: "♚"
+};
+
+let boardState = JSON.parse(JSON.stringify(initialPosition));
+let selected = null;
+let currentTurn = "w"; // w = branco, b = preto
 
 function createBoard() {
   board.innerHTML = "";
@@ -19,45 +28,44 @@ function createBoard() {
       square.classList.add("square");
       const isWhite = (row + col) % 2 === 0;
       square.classList.add(isWhite ? "white" : "black");
+
       square.dataset.row = row;
       square.dataset.col = col;
 
-      const piece = initialPosition[row][col];
-      square.textContent = piece;
+      const piece = boardState[row][col];
+      square.textContent = pieceSymbols[piece] || "";
 
-      square.addEventListener("click", () => handleSquareClick(row, col));
-
+      square.addEventListener("click", () => handleSquareClick(row, col, square));
       board.appendChild(square);
     }
   }
 }
 
-let selected = null;
-
-function handleSquareClick(row, col) {
-  const squareIndex = row * 8 + col;
-  const squares = document.querySelectorAll(".square");
-  const square = squares[squareIndex];
+function handleSquareClick(row, col, square) {
+  const piece = boardState[row][col];
 
   if (selected) {
-    // Mover peça
     const fromRow = selected.row;
     const fromCol = selected.col;
-    const fromIndex = fromRow * 8 + fromCol;
+    const selectedPiece = boardState[fromRow][fromCol];
 
-    const fromSquare = squares[fromIndex];
-    const piece = fromSquare.textContent;
-
-    fromSquare.textContent = "";
-    square.textContent = piece;
+    // Verifica se está movendo pra posição diferente
+    if (fromRow !== row || fromCol !== col) {
+      // Movimento válido? (por enquanto: só se não for peça do mesmo lado)
+      if (!piece || piece[0] !== currentTurn) {
+        boardState[row][col] = selectedPiece;
+        boardState[fromRow][fromCol] = "";
+        currentTurn = currentTurn === "w" ? "b" : "w"; // Alterna turno
+      }
+    }
 
     selected = null;
-  } else {
-    const piece = square.textContent;
-    if (piece !== "") {
-      selected = { row, col };
-    }
+    createBoard();
+  } else if (piece && piece[0] === currentTurn) {
+    selected = { row, col };
+    square.classList.add("selected");
   }
 }
 
 createBoard();
+
