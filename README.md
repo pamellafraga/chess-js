@@ -1,28 +1,54 @@
-# ♟️ Xadrez em JavaScript
+# ♟️ Jogo de Xadrez em JavaScript
 
-Projeto de estudo para praticar lógica com JavaScript puro, construindo um tabuleiro de xadrez dinâmico com HTML, CSS e JS.
+Este é um projeto completo de **xadrez interativo** desenvolvido com **JavaScript puro**, HTML e CSS.  
+Todas as peças possuem movimentação válida, controle de turnos e regras básicas implementadas.
 
-> 🔗 Acesse o jogo online: [Clique aqui](https://pamellafraga.github.io/chess-js/)
-
-## 🚀 O que já faz:
-- Geração automática do tabuleiro (8x8)
-- Cores alternadas (preto e branco)
-- Layout responsivo com `Grid`
-
-## 🧠 Em desenvolvimento:
-- Peças de xadrez posicionadas corretamente
-- Movimentação via clique
-- Regras por peça (torre, bispo, cavalo, etc)
-- Turno (brancas vs pretas)
-- Validação de jogadas
-- Xeque e xeque-mate
-
-## 🛠️ Tecnologias
-- HTML5
-- CSS3 (Grid)
-- JavaScript (DOM e lógica)
+🔗 **Jogue agora**: [https://pamellafraga.github.io/chess-js](https://pamellafraga.github.io/chess-js)
 
 ---
 
-Feito por [Pamella Fraga](https://github.com/pamellafraga) 🧠💻
-# chess-js
+## 🧠 Funcionalidades
+
+✅ Geração automática do tabuleiro (8x8)  
+✅ Posicionamento correto de todas as peças  
+✅ Alternância de turnos (brancas e pretas)  
+✅ Movimentação válida por tipo de peça  
+✅ Captura de peças inimigas  
+✅ Bloqueio de caminho (torre, bispo, rainha)  
+✅ Destaque de peça selecionada  
+✅ Validações simples de peão (avanço, captura e 2 casas no início)
+
+---
+
+## 🛠️ Tecnologias usadas
+
+- HTML5
+- CSS3 (Grid layout)
+- JavaScript (puro, sem frameworks)
+
+---
+
+## 🚧 Em breve
+
+- [ ] Xeque e Xeque-Mate
+- [ ] Promoção de peão
+- [ ] Roque
+- [ ] En Passant
+- [ ] IA opcional ou multiplayer local
+
+---
+
+## 📸 Preview
+
+![Preview do Jogo de Xadrez](https://user-images.githubusercontent.com/00000000/preview.jpg) <!-- substitua se quiser depois -->
+
+---
+
+## 🙋‍♀️ Desenvolvido por
+
+**Pamella Fraga**  
+[GitHub](https://github.com/pamellafraga) • [LinkedIn](https://www.linkedin.com/in/pamellafraga)
+
+---
+
+> Este projeto é ideal para estudo de lógica, estruturas de dados, manipulação de DOM e desenvolvimento de jogos com JavaScript puro.
