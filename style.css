@@ -32,3 +32,7 @@ body {
 .black {
   background-color: #444;
 }
+
+.selected {
+  outline: 3px solid gold;
+}
