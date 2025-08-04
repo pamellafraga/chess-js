@@ -1,0 +1,34 @@
+body {
+  background: #111;
+  color: white;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+#chessboard {
+  width: 480px;
+  height: 480px;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  border: 4px solid #fff;
+}
+
+.square {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  cursor: pointer;
+}
+
+.white {
+  background-color: #eee;
+}
+
+.black {
+  background-color: #444;
+}
